@@ -1,0 +1,611 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-fences-math .MathJax_SVG_Display, .md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: visible; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; zoom: 90%; }
+#math-inline-preview-content { zoom: 1.1; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix foreignobject { font-size: var(--mermaid-font-zoom); }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-math .MathJax_SVG_Display { margin-top: 8px; cursor: default; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+ :root {--mermaid-font-zoom:1.5em ;} 
+</style><title>data-structure-and-algorithm</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='数据结构-1'><span>数据结构</span></h1><h2 id='目录'><span>目录</span></h2><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#数据结构-1">数据结构</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1676"><a class="md-toc-inner" href="#目录">目录</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n2"><a class="md-toc-inner" href="#绪论">绪论</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n3"><a class="md-toc-inner" href="#考查点-1">考查点</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n25"><a class="md-toc-inner" href="#基本概念-1">基本概念</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n52"><a class="md-toc-inner" href="#数据结构-2">数据结构</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n99"><a class="md-toc-inner" href="#算法">算法</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n134"><a class="md-toc-inner" href="#线性表">线性表</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n136"><a class="md-toc-inner" href="#考查点-2">考查点</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n160"><a class="md-toc-inner" href="#顺序存储">顺序存储</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n178"><a class="md-toc-inner" href="#链式存储">链式存储</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n275"><a class="md-toc-inner" href="#栈和队列">栈和队列</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n276"><a class="md-toc-inner" href="#考查点-3">考查点</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n302"><a class="md-toc-inner" href="#栈">栈</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n342"><a class="md-toc-inner" href="#队列">队列</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n384"><a class="md-toc-inner" href="#数组线性表的推广）">数组（线性表的推广）</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n395"><a class="md-toc-inner" href="#串">串</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n396"><a class="md-toc-inner" href="#考查点-4">考查点</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n410"><a class="md-toc-inner" href="#基本概念-2">基本概念</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n414"><a class="md-toc-inner" href="#存储结构">存储结构</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n425"><a class="md-toc-inner" href="#模式匹配算法">模式匹配算法</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n503"><a class="md-toc-inner" href="#树和二叉树">树和二叉树</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n504"><a class="md-toc-inner" href="#考查点-5">考查点</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n538"><a class="md-toc-inner" href="#二叉树">二叉树</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n820"><a class="md-toc-inner" href="#树和森林">树和森林</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n891"><a class="md-toc-inner" href="#图">图</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n892"><a class="md-toc-inner" href="#考查点-6">考查点</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n918"><a class="md-toc-inner" href="#图的基本术语">图的基本术语</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n928"><a class="md-toc-inner" href="#图结构的存储">图结构的存储</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n950"><a class="md-toc-inner" href="#图的遍历">图的遍历</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n964"><a class="md-toc-inner" href="#图的相关应用">图的相关应用</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1050"><a class="md-toc-inner" href="#查找">查找</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1051"><a class="md-toc-inner" href="#考查点-7">考查点</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1089"><a class="md-toc-inner" href="#基本概念-3">基本概念</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1101"><a class="md-toc-inner" href="#线性结构">线性结构</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1132"><a class="md-toc-inner" href="#树形结构">树形结构</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1155"><a class="md-toc-inner" href="#散列结构">散列结构</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1221"><a class="md-toc-inner" href="#效率指标">效率指标</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1231"><a class="md-toc-inner" href="#排序">排序</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1232"><a class="md-toc-inner" href="#考查点-8">考查点</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1295"><a class="md-toc-inner" href="#基本概念-4">基本概念</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1310"><a class="md-toc-inner" href="#内部排序">内部排序</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1620"><a class="md-toc-inner" href="#外部排序">外部排序</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1625"><a class="md-toc-inner" href="#扩展">扩展</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1626"><a class="md-toc-inner" href="#个人介绍">个人介绍</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1636"><a class="md-toc-inner" href="#算法可视化网站">算法可视化网站</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1663"><a class="md-toc-inner" href="#算法复杂度分析">算法复杂度分析</a></span></p></div><h2 id='绪论'><span>绪论</span></h2><h3 id='考查点-1'><span>考查点</span></h3><ul><li><p><span>考纲内容</span></p><ul><li><ol start='' ><li><span>数据结构相关的概念和术语</span></li></ol></li><li><ol start='2' ><li><span>数据结构的三要素：逻辑、物理结构及数据运算</span></li></ol></li><li><ol start='3' ><li><span>算法时间及空间复杂度的分析及计算</span></li></ol></li></ul></li><li><p><span>复习提示</span></p><ul><li><span>重点掌握时间与空间复杂度的分析（选择或算法设计题）</span></li></ul></li></ul><h3 id='基本概念-1'><span>基本概念</span></h3><ul><li><p><span>数据</span></p><ul><li><span>是信息的载体</span></li></ul></li><li><p><span>数据元素</span></p><ul><li><span>是数据的基本单位</span></li></ul></li><li><p><span>数据对象</span></p><ul><li><span>是相同性质的数据元素的集合</span></li></ul></li><li><p><span>数据类型</span></p><ul><li><span>是一个值的集合和定义在此集合上的一组操作的总称</span></li></ul></li><li><p><span>数据结构</span></p><ul><li><span>是相互之间存在一种或多种特定关系的数据元素的集合</span></li></ul></li></ul><h3 id='数据结构-2'><span>数据结构</span></h3><ul><li><p><span>逻辑结构</span></p><ul><li><p><span>线性结构</span></p><ul><li><span>线性表、栈、队列</span></li></ul></li><li><p><span>非线性结构</span></p><ul><li><span>树、图、集合</span></li></ul></li><li><p><span>数据的逻辑结构分类图</span></p><ul><li></li></ul></li></ul></li><li><p><span>存储结构</span></p><ul><li><p><span>顺序存储</span></p><p><span>把逻辑上相邻的元素存储在物理位置上也相邻的存储单元中, 元素之间的关系由存储单元的邻接关系来体现.</span></p></li><li><p><span>链式存储</span></p><p><span>不要求逻辑上相邻的元素在物理位置上也相邻, 借助指示元素存储地址的指针来表示元素之间的逻辑关系.</span></p></li><li><p><span>索引存储</span></p><p><span>在存储元素的同时, 还建立附加的索引表.</span></p></li><li><p><span>散列存储</span></p><p><span>根据元素的关键字直接计算出该元素的存储地址, 又称哈希(Hash)存储.</span></p></li><li><p><span>4类基本结构关系示例图</span></p><ul><li></li></ul></li></ul></li><li><p><span>数据的运算</span></p><ul><li><span>运算的定义针对逻辑结构, 指出运算的功能</span></li><li><span>运算的实现针对存储结构, 指出运算的具体操作步骤</span></li></ul></li></ul><h3 id='算法'><span>算法</span></h3><ul><li><p><span>概念</span></p><ul><li><span>是对特定问题求解步骤的一种描述</span></li></ul></li><li><p><span>特征</span></p><ul><li><span>有穷性、确定性、可行性、输入、输出</span></li></ul></li><li><p><span>目标</span></p><ul><li><span>正确性、可读性、健壮性、效率与低存储量需求</span></li></ul></li><li><p><span>效率的度量</span></p><ul><li><p><span>时间复杂度﻿)</span></p><ul><li><p><span>指算法中所有语句的频度之和</span></p></li><li><p><span>运算法则及常见的渐进时间复杂度</span></p><ul><li></li></ul></li></ul></li><li><p><span>空间复杂度﻿</span></p><ul><li><span>指该算法所耗费的存储空间，算法原地工作为﻿</span></li></ul></li></ul></li></ul><h2 id='线性表'><span>线性表</span></h2><p><span>逻辑结构</span></p><h3 id='考查点-2'><span>考查点</span></h3><ul><li><p><span>考纲内容</span></p><ul><li><ol start='' ><li><span>线性表的定义和基本操作</span></li></ol></li><li><ol start='2' ><li><span>线性表的实现（顺序及链式存储）</span></li></ol></li><li><ol start='3' ><li><span>线性表的应用</span></li></ol></li><li><p><span>注意点：算法题只能用C/C++实现，且要求最优性能（时间及空间复杂度）</span></p></li></ul></li><li><p><span>复习提示</span></p><ul><li><span>其为考研命题的重点, 应重点掌握线性表的各种操作（基于两种存储结构）</span></li></ul></li></ul><h3 id='顺序存储'><span>顺序存储</span></h3><p><span>存储结构</span></p><ul><li><p><span>顺序表</span></p><p><span>表中元素的逻辑顺序和物理顺序相同、支持随机访问、存储密度高.</span></p><ul><li><p><span>插入算法的平均复杂度为﻿</span></p></li><li><p><span>删除算法的平均复杂度为﻿</span></p></li><li><p><span>按值查找算法的平均复杂度为﻿</span></p></li><li><p><span>线性表的顺序存储结构示例图</span></p><ul><li></li></ul></li></ul></li></ul><h3 id='链式存储'><span>链式存储</span></h3><p><span>存储结构</span></p><ul><li><p><span>单链表</span></p><p><span>不要求逻辑上相邻的元素在物理位置上也相邻, 通过 &quot;链&quot; 建立起数据元素之间的逻辑关系.</span></p><ul><li><p><span>节点结构</span></p><ul><li><p><span>示例图</span></p><ul><li></li></ul></li></ul></li><li><p><span>头插法</span></p><ul><li><p><span>示例图</span></p><ul><li><span>next = head-&gt;next;  head-&gt;next = newNode;&quot;&gt;﻿</span></li></ul></li></ul></li><li><p><span>尾插法</span></p><ul><li><p><span>示例图</span></p><ul><li><span>next = newNode;  tail = newNode;  tail-&gt;next = NULL;&quot;&gt;﻿</span></li></ul></li></ul></li><li><p><span>插入节点</span></p><ul><li><p><span>示例图</span></p><ul><li><span>next = p-&gt;next;  p-&gt;next = newNode;&quot;&gt;﻿</span></li></ul></li></ul></li><li><p><span>删除节点</span></p><ul><li><p><span>示例图</span></p><ul><li><span>next = q-&gt;next;&quot;&gt;﻿</span></li></ul></li></ul></li></ul></li><li><p><span>双链表</span></p><p><span>双链表有两个指针prior和next, 分别指向其前驱及后继节点, 进而克服了单链表访问某个前驱节点时只能从头遍历的缺点.</span></p><ul><li><p><span>插入节点</span></p><ul><li><p><span>示例图</span></p><ul><li><span>next = p-&gt;next;  p-&gt;next-&gt;prior = s;  s-&gt;prior = p;  p-&gt;next = s;&quot;&gt;﻿</span></li></ul></li></ul></li><li><p><span>删除节点</span></p><ul><li><p><span>示例图</span></p><ul><li><span>next = q-&gt;next;  q-&gt;next-prior = p;&quot;&gt;﻿</span></li></ul></li></ul></li></ul></li><li><p><span>循环链表</span></p><ul><li><p><span>循环单链表</span></p><p><span>与单链表的区别在于表中尾节点的指针不是NULL, 而改为指向头节点, 从而整个链表形成了一个环.</span></p><ul><li><p><span>示例图</span></p><ul><li><span>若常在表头和表尾进行操作, 则不设头节点﻿而仅设尾节﻿点效率更高.</span></li></ul></li></ul></li><li><p><span>循环双链表</span></p><p><span>即双向链表与循环链表的结合体.</span></p><ul><li><p><span>示例图</span></p><ul><li><span>当循环链表为空表时, 其头节点的 ﻿ 域和 ﻿ 域都等于﻿</span></li></ul></li></ul></li></ul></li><li><p><span>静态链表</span></p><p><span>静态链表借助数组来描述线性表存储结构, 节点也有数据域data和指针域next, 与链表中的指针不同的是, 静态链表的指针是节点的相对地址(数组下标), 又称游标.</span></p><ul><li><p><span>示例图</span></p><ul><li><span>静态链表对于不支持指针的高级语言(如﻿), 是一种巧妙的设计方法.</span></li></ul></li></ul></li></ul><h2 id='栈和队列'><span>栈和队列</span></h2><h3 id='考查点-3'><span>考查点</span></h3><ul><li><p><span>考纲内容</span></p><ul><li><ol start='' ><li><span>栈和队列的基本概念</span></li></ol></li><li><ol start='2' ><li><span>栈和队列的顺序及链式存储结构</span></li></ol></li><li><ol start='3' ><li><span>栈和队列的应用</span></li></ol></li><li><ol start='4' ><li><span>特殊矩阵的压缩存储</span></li></ol></li></ul></li><li><p><span>复习提示</span></p><ul><li><span>本章以选择题为主, 重点考查栈（出入栈的过程及出栈序列的合法性）和队列的操作及特征</span></li></ul></li></ul><h3 id='栈'><span>栈</span></h3><p><span>栈(Stack)是只允许在一端进行插入或删除的</span><strong><span>操作受限</span></strong><span>的线性表, 其特征为</span><strong><span>FILO/LIFO</span></strong><span>.</span></p><ul><li><p><span>栈的示意图</span></p><ul><li></li></ul></li><li><p><span>顺序栈</span></p><p><span>利用一组地址连续的存储单元存放自栈底到栈顶的元素, 同时附设一个指针(top)指向当前栈顶元素的位置.</span></p><ul><li><p><span>栈顶指针和栈中元素之间的关系示例图</span></p><ul><li><span>进栈为 ﻿  出栈为 ﻿</span></li></ul></li></ul></li><li><p><span>链栈</span></p><p><span>采用链式存储的栈称为链栈, 其优点为便于多个栈共享存储空间和提高操作效率, 且不存在栈满上溢的情况.</span></p><ul><li><p><span>栈的链式存储示例图</span></p><ul><li><span>便于节点的插入和删除, 出入栈的操作都在链表的表头进行.</span></li></ul></li></ul></li><li><p><span>共享栈</span></p><p><span>利用栈底位置相对不变的特性, 将两个顺序栈共享一个一维数组空间, 两个栈底分别设置在共享空间的两端, 栈顶向共享空间的中间延伸. 其优点为节省空间, 降低发生上溢的可能.</span></p><ul><li><p><span>两个顺序栈共享存储空间的示例图</span></p><ul><li><span>存取效率不变, 其时间复杂度均为﻿.</span></li></ul></li></ul></li><li><p><span>卡特兰﻿数</span></p><ul><li><span>个不同元素入栈, 出栈元素不同排序的个数为﻿</span></li></ul></li></ul><h3 id='队列'><span>队列</span></h3><p><span>队列(Queue)也是一种</span><strong><span>操作受限</span></strong><span>的线性表, 只允许在表的一端进行插入, 而在表的另一端进行删除, 其特征为</span><strong><span>FIFO/LILO</span></strong><span>.</span></p><ul><li><p><span>队列的示意图</span></p><ul><li></li></ul></li><li><p><span>顺序队列</span></p><p><span>用一块连续的存储单元存放队列中的元素, 并附设两个指针: 队头指针front指向队头元素, 队尾指针rear指向队尾元素的下一个位置(不同教材的定义不同哈).</span></p><ul><li><p><span>队列的操作示例图</span></p><ul><li><span>并不能用 ﻿ 作为队满的条件, 如图 (d) 的假溢出（引出循环队列）.</span></li></ul></li></ul></li><li><p><span>循环队列</span></p><p><span>为了解决顺序队列的缺点, 引出了循环队列的概念. 将顺序队列臆造成一个环状的空间, 即把存储队列元素的表从逻辑上视为一个环, 称为循环队列.</span></p><ul><li><p><span>循环队列出入队示例图</span></p><ul><li><span>为了判空及判满，约定以“队头指针在队尾指针的下一个位置作为队满的标志”</span></li></ul></li></ul></li><li><p><span>链式队列</span></p><p><span>实际上是一个同时带有队头指针和队尾指针的单链表, 头指针指向队头节点, 尾指针指向队尾节点(单链表的最后一个节点).</span></p><ul><li><p><span>不带头结点的链式队列示例图</span></p><ul><li></li></ul></li><li><p><span>带头节点的链式队列示例图</span></p><ul><li><span>当仅有一个元素时, 删除后队列为空, 故头尾指针都需要修改, 即 ﻿</span></li></ul></li></ul></li><li><p><span>双端队列</span></p></li></ul><h3 id='数组线性表的推广）'><span>数组（线性表的推广）</span></h3><ul><li><p><span>一维数组</span></p></li><li><p><span>多维数组</span></p><ul><li><span>压缩存储</span></li><li><span>稀疏矩阵</span></li></ul></li></ul><h2 id='串'><span>串</span></h2><h3 id='考查点-4'><span>考查点</span></h3><ul><li><p><span>考纲内容</span></p><ul><li><ol start='' ><li><span>字符串模式匹配</span></li></ol></li></ul></li><li><p><span>复习提示</span></p><ul><li><span>重点掌握KMP匹配算法的原理及next数组的推理过程</span></li></ul></li></ul><h3 id='基本概念-2'><span>基本概念</span></h3><ul><li><span>子串、主串（包含子串）、空格串（非空串）</span></li></ul><h3 id='存储结构'><span>存储结构</span></h3><ul><li><p><span>定长顺序存储</span></p><p><span>类似于线性表的顺序存储结构, 用一组地址连续的存储单元存储串值的字符序列.</span></p></li><li><p><span>堆分配存储</span></p><p><span>以一组地址连续的存储单元存放串值的字符序列, 其存储空间是动态分配的.</span></p></li><li><p><span>块链存储</span></p><p><span>类似于线性表的链式存储结构, 也可采用链式方式存储串值.</span></p></li></ul><h3 id='模式匹配算法'><span>模式匹配算法</span></h3><ul><li><p><span>BF（暴力匹配）算法</span></p><p><span>最坏时间复杂度为O(nm), 实际执行时间近似为O(n + m), 其中n和m分别为主串和模式串的长度.</span></p><ul><li><p><span>C++ 代码实现</span></p><ul><li><span>最坏的时间复杂度为﻿</span></li></ul></li></ul></li><li><p><span>KMP算法</span></p><p><span>其为BF算法的改进, 时间复杂度为O(n + m), 主要优点为主串不回溯.</span></p><ul><li><p><span>C++ 代码实现</span></p><ul><li><span>时间复杂度为﻿</span></li></ul></li></ul></li><li><p><span>构建 ﻿ 数组</span></p><ul><li><p><span>部分匹配增值表（Partial Match, PM）</span></p><ul><li><p><span>示例图</span></p><ul><li><span>移动位数 = 已匹配的字符数 - 对应的部分匹配值</span></li></ul></li></ul></li><li><p><span>通过 PM 构建 next 数组</span></p><ul><li><ol start='' ><li><span>PM右移</span></li></ol><ul><li><p><span>示例图</span></p><ul><li><span>右移后需将 ﻿ 该写为 ﻿</span></li></ul></li></ul></li><li><ol start='2' ><li><span>整体 + 1</span></li></ol><ul><li><p><span>示例图</span></p><ul><li><span>为了使公式简洁故将 ﻿ 数组整体 ﻿, 进而可将 ﻿ 该写为 ﻿</span></li></ul></li></ul></li></ul></li></ul></li><li><p><span>KMP算法的进一步改进</span></p><p><span>引入nextval数组(next数组修正值)是为了解决KMP算法中的缺陷, 即子串在进行</span><strong><span>回溯</span></strong><span>匹配的过程中可能存在</span><strong><span>不必要的重复匹配</span></strong><span>问题.</span></p><ul><li><p><span>求 ﻿ 的一般步骤</span></p><ul><li><ol start='' ><li><span>当 j 等于 1 时, ﻿ 赋值为0, 作为特殊标记</span></li></ol></li><li><ol start='2' ><li><span>当 ﻿ 不等于 ﻿ 时, ﻿ 赋值为 ﻿</span></li></ol></li><li><ol start='3' ><li><span>当 ﻿ 等于 ﻿ 时, ﻿ 赋值为 ﻿</span></li></ol></li><li><p><span>示例图</span></p><ul><li></li></ul></li></ul></li></ul></li></ul><h2 id='树和二叉树'><span>树和二叉树</span></h2><h3 id='考查点-5'><span>考查点</span></h3><ul><li><p><span>考纲内容</span></p><ul><li><ol start='' ><li><span>二叉树的定义及特征</span></li></ol></li><li><ol start='2' ><li><span>二叉树的顺序及链式存储结构</span></li></ol></li><li><ol start='3' ><li><span>二叉树的遍历</span></li></ol></li><li><ol start='4' ><li><span>线索二叉树的概念及构造</span></li></ol></li><li><ol start='5' ><li><span>森林的遍历及和二叉树的转换</span></li></ol></li><li><ol start='6' ><li><span>二叉排序树、平衡二叉树、哈夫曼树及其编码</span></li></ol></li></ul></li><li><p><span>复习提示</span></p><ul><li><span>本章多以选择题为主，涉及的算法题常与树的遍历有关</span></li></ul></li></ul><h3 id='二叉树'><span>二叉树</span></h3><ul><li><p><span>五种基本形态示例图</span></p><ul><li><span>特点为每个节点至多只有两颗子树,且子树有左右之分,次序不能任意颠倒.</span></li></ul></li><li><p><span>特殊二叉树</span></p><ul><li><p><span>满二叉树与完全二叉树</span></p><ul><li><p><span>示例图</span></p><ul><li><span>主要区别在于(b)若有度为1的节点，则只可能有一个，且该结点只有左孩子而无右孩子</span></li></ul></li></ul></li><li><p><span>二叉排序树（BST）</span></p><p><span>若二叉排序树的左右子树的高度之差的绝对值不超过</span><strong><span>1</span></strong><span>，则称其为平衡二叉树.</span></p><ul><li><p><span>示例图</span></p><ul><li><span>左子树节点值 ﻿ 根节点值 ﻿ 右子树节点值</span></li></ul></li></ul></li><li><p><span>平衡二叉树（BBT）</span></p><ul><li><p><span>示例图</span></p><ul><li><span>树上的任一节点的左右子树的深度只差不超过1</span></li></ul></li></ul></li></ul></li><li><p><span>存储结构</span></p><ul><li><p><span>顺序存储</span></p><ul><li><p><span>示例图</span></p><ul><li><span>比较适合存储完全二叉树和满二叉树（最大可能节省存储空间）</span></li></ul></li></ul></li><li><p><span>链式存储</span></p><ul><li><p><span>示例图</span></p><ul><li><span>在含有﻿个节点的二叉链表中，含有﻿个空链域</span></li></ul></li></ul></li></ul></li><li><p><span>操作</span></p><ul><li><p><span>遍历</span></p><ul><li><p><span>前序遍历</span></p><ul><li><p><span>递归法</span></p><ul><li><p><span>Java 代码实现</span></p><ul><li></li></ul></li></ul></li><li><p><span>迭代法</span></p><ul><li><p><span>Java 代码实现</span></p><ul><li></li></ul></li></ul></li></ul></li><li><p><span>中序遍历</span></p><ul><li><p><span>递归法</span></p><ul><li><p><span>Java 代码实现</span></p><ul><li></li></ul></li></ul></li><li><p><span>迭代法</span></p><ul><li><p><span>Java 代码实现</span></p><ul><li></li></ul></li></ul></li></ul></li><li><p><span>后序遍历</span></p><ul><li><p><span>递归法</span></p><ul><li><p><span>Java 代码实现</span></p><ul><li></li></ul></li></ul></li><li><p><span>迭代法</span></p><ul><li><p><span>Java 代码实现</span></p><ul><li></li></ul></li></ul></li></ul></li><li><p><span>层次遍历</span></p><ul><li><p><span>Java 代码实现</span></p><ul><li></li></ul></li><li><p><span>示例图</span></p><ul><li><span>遍历次序为从上到下，从左到右</span></li></ul></li></ul></li><li><p><span>三种遍历过程示例图</span></p><ul><li><span>🔺🔴🟥分别代表前序遍历、中序遍历、后序遍历</span></li></ul></li></ul></li><li><p><span>线索二叉树</span></p><ul><li><p><span>目的</span></p><ul><li><span>为了加快查找节点前驱和后继的速度</span></li></ul></li><li><p><span>公式</span></p><ul><li><span>空指针总数为﻿，又﻿，所以空指针总数为﻿</span></li></ul></li><li><p><span>节点结构及标志域</span></p><ul><li><span>若无左孩子则lchild指向其前驱节点，若无右孩子则rchild指向其后继节点</span></li><li><span>0代表该节点具有左/右孩子节点，反之则表示无左/右孩子节点</span></li></ul></li><li><p><span>前、中、后序遍历线索二叉树</span></p><p><span>二叉树的</span><strong><span>线索化</span></strong><span>是将二叉链表中的空指针改为指向前驱或后继的线索.</span></p><ul><li><p><span>前序线索二叉树</span></p><ul><li><p><span>示例图</span></p><ul><li></li></ul></li></ul></li><li><p><span>中序、后序线索二叉树</span></p><ul><li><p><span>示例图</span></p><ul><li></li></ul></li></ul></li></ul></li></ul></li></ul></li><li><p><span>应用</span></p><ul><li><p><span>排序二叉树（BST）</span></p><ul><li><p><span>构造过程</span></p><ul><li><p><span>示例图</span></p><ul><li><span>设关键字序列为﻿，则生成的而二叉排序树如上图所示， 若构造二叉排序树的输入序列是有序的，则会形成一个倾斜的单支树</span></li></ul></li></ul></li><li><p><span>插入节点</span></p><ul><li><p><span>示例图</span></p><ul><li></li></ul></li></ul></li><li><p><span>删除节点</span></p><ul><li><p><span>示例图</span></p><ul><li><span>仅需修改指针即可完成插入和删除操作，平均执行时间为﻿</span></li></ul></li></ul></li></ul></li><li><p><span>平衡二叉树</span></p><ul><li><p><span>插入（平衡调整）</span></p><p><span>王道书中调整节点平衡的方法过于繁琐, 建议采用孙老师PPT中讲解的方法(</span><strong><span>超级简单</span></strong><span>), 就是通过</span><strong><span>往上提拉节点</span></strong><span>的方式使其保持平衡.</span></p><ul><li><p><span>LL平衡旋转（右单旋转）</span></p><ul><li><p><span>示例图</span></p><ul><li><span>在节点A的左孩子（L）的左子树（L）上插入新节点</span></li></ul></li></ul></li><li><p><span>RR平衡旋转（左单旋转）</span></p><ul><li><p><span>示例图</span></p><ul><li><span>在节点A的右孩子（R）的右子树（R）上插入了新节点</span></li></ul></li></ul></li><li><p><span>LR平衡旋转（先左后右旋转）</span></p><ul><li><p><span>示例图</span></p><ul><li><span>在节点A的左孩子（L）的右子树（R）上插入新节点</span></li></ul></li></ul></li><li><p><span>RL平衡旋转（先右后左旋转）</span></p><ul><li><p><span>示例图</span></p><ul><li><span>在节点A的有孩子（R）的左子树（L）上插入新节点</span></li></ul></li></ul></li></ul></li><li><p><span>生成过程</span></p><ul><li><p><span>示例图</span></p><ul><li></li></ul></li></ul></li><li><p><span>查找</span></p><ul><li><p><span>示例图</span></p><ul><li></li></ul></li></ul></li></ul></li><li><p><span>哈夫曼树</span></p><p><span>也称为最优二叉树, 即为带权路径长度(</span><strong><span>WPL</span></strong><span>)最小的二叉树.</span></p><ul><li><p><span>构造过程</span></p><ul><li><p><span>示例图</span></p><ul><li></li></ul></li></ul></li><li><p><span>哈夫曼编码</span></p><p><span>哈夫曼编码是一种被广泛应用而且非常有效的</span><strong><span>数据压缩编码</span></strong><span>.</span></p><p><span>1.权值为字符出现的频率（或次数）</span>
+<span>2.其中边标记为0表示&quot;转向左孩子&quot;，标记为1则表示&quot;转向右孩子&quot;（1或0的表示没有明确规定哟）</span></p><ul><li><p><span>示例图</span></p><ul><li><span>WPL可视为最终编码得到二进制编码的长度</span></li></ul></li></ul></li></ul></li></ul></li></ul><h3 id='树和森林'><span>树和森林</span></h3><ul><li><p><span>存储结构</span></p><ul><li><p><span>顺序存储结构（双亲表示法）</span></p><ul><li><p><span>示例图</span></p><ul><li><span>便于查找节点的双亲节点，但求节点的孩子节点需要遍历整个结构</span></li></ul></li></ul></li><li><p><span>链式存储结构</span></p><ul><li><p><span>孩子表示法</span></p><ul><li><p><span>示例图</span></p><ul><li><span>便于寻找节点的子女节点</span></li></ul></li></ul></li><li><p><span>孩子兄弟表示法</span></p><ul><li><p><span>示例图</span></p><ul><li><span>便于实现树转换为二叉树的操作</span></li></ul></li></ul></li></ul></li></ul></li><li><p><span>操作</span></p><ul><li><p><span>树与二叉树的转换</span></p><ul><li><p><span>示例图</span></p><ul><li><span>树转换为二叉树的规则：左孩子右兄弟法</span></li></ul></li></ul></li><li><p><span>森林与二叉树的转换</span></p><ul><li><p><span>示例图</span></p><ul><li><span>先将森林中的每颗树转换成相应的二叉树，然后按一定规则组合各颗二叉树</span></li></ul></li></ul></li><li><p><span>树和森林的遍历与二叉树遍历的对应关系</span></p><ul><li><p><span>示例图</span></p><ul><li></li></ul></li></ul></li></ul></li><li><p><span>应用</span></p><ul><li><p><span>并查集是一种简单的集合表示</span></p><ul><li><span>：初始化并查集</span></li><li><span>：求两个不相交子集合的并集</span></li><li><span>：在并查集﻿中查找并返回包含元素﻿的树的根</span></li></ul></li></ul></li></ul><h2 id='图'><span>图</span></h2><h3 id='考查点-6'><span>考查点</span></h3><ul><li><p><span>考纲内容</span></p><ul><li><ol start='' ><li><span>图的基本概念</span></li></ol></li><li><ol start='2' ><li><span>图的存储及基本操作</span></li></ol></li><li><ol start='3' ><li><span>图的遍历</span></li></ol></li><li><ol start='4' ><li><span>图的基本应用</span></li></ol></li></ul></li><li><p><span>复习提示</span></p><ul><li><span>主要掌握深度优先搜索与广度优先搜索，图的相关算法只需掌握其基本思想及实现步骤</span></li></ul></li></ul><h3 id='图的基本术语'><span>图的基本术语</span></h3><ul><li><span>有向图、无向图、简单图、多重图、完全图、子图</span></li><li><span>连图、连通图和连通分量、强连通图、强连通分量</span></li><li><span>生成树、生成森林、顶点的度、入度、出度、边的权和网</span></li><li><span>稠密图、稀疏图、路径、路径长度和回路、简单路径、简单回路、距离、有向树</span></li></ul><h3 id='图结构的存储'><span>图结构的存储</span></h3><ul><li><p><span>邻接矩阵法</span></p><ul><li><span>利用二维数组存储顶点之间的邻接关系，具有唯一性及对称性</span></li></ul></li><li><p><span>邻接表法</span></p><ul><li><span>结合顺序及链式存储方法，节省了邻接矩阵中浪费的存储空间</span></li></ul></li><li><p><span>邻接多重表</span></p><ul><li><span>是无向图的另一种链式存储结构</span></li></ul></li><li><p><span>十字链表</span></p><ul><li><span>是有向图的另一种链式存储结构</span></li></ul></li></ul><h3 id='图的遍历'><span>图的遍历</span></h3><ul><li><p><span>广度优先遍历</span></p><p><span>类似于二叉树的层次遍历，需借助一个辅助队列.</span></p><ul><li><span>Java 代码实现</span></li></ul></li><li><p><span>深度优先遍历</span></p><p><span>类似于二叉树的先序遍历，需借助一个辅助栈.</span></p><ul><li><span>Java 代码实现</span></li></ul></li></ul><h3 id='图的相关应用'><span>图的相关应用</span></h3><ul><li><p><span>最小生成树</span></p><ul><li><p><span>Prim算法</span></p><p><span>适用于求解边稠密的的图的最小生成树</span></p><ul><li><p><span>Java 代码实现</span></p><ul><li></li></ul></li><li><p><span>示例图</span></p><ul><li></li></ul></li></ul></li><li><p><span>Kruskal算法</span></p><p><span>适用于求解边稀疏而顶点较多的图</span></p><ul><li><p><span>Java 代码实现</span></p><ul><li></li></ul></li><li><p><span>示例图</span></p><ul><li></li></ul></li></ul></li></ul></li><li><p><span>最短路径</span></p><ul><li><p><span>Dijkstra算法</span></p><p><span>用于求单源最短路径, 既求图中某一点到其它各顶点的最短路径.(</span><strong><span>不允许边上的权值为负</span></strong><span>)</span></p><ul><li><p><span>Java 代码实现</span></p><ul><li></li></ul></li><li><p><span>示例图</span></p><ul><li></li></ul></li></ul></li><li><p><span>Floyd算法</span></p><p><span>用于求每对顶点间的最短路径.(</span><strong><span>不允许有包含带负权值的边组成的回路</span></strong><span>)</span></p><ul><li><p><span>Java 代码实现</span></p><ul><li></li></ul></li><li><p><span>示例图</span></p><ul><li></li></ul></li></ul></li></ul></li><li><p><span>拓扑排序</span></p><ul><li><p><span>AOV网</span></p><p><span>拓扑排序是对</span><strong><span>有向无环图</span></strong><span>的顶点的一种排序. (</span><strong><span>若原图存在回路, 则表示不存在拓扑排序</span></strong><span>)</span></p><ul><li><p><span>Java 代码实现</span></p><ul><li></li></ul></li><li><p><span>示例图</span></p><ul><li></li></ul></li></ul></li></ul></li><li><p><span>关键路径</span></p><ul><li><span>AOE网</span></li></ul></li></ul><h2 id='查找'><span>查找</span></h2><h3 id='考查点-7'><span>考查点</span></h3><ul><li><p><span>考纲内容</span></p><ul><li><ol start='' ><li><span>查找的基本概念</span></li></ol></li><li><ol start='2' ><li><span>顺序查找法</span></li></ol></li><li><ol start='3' ><li><span>分块查找法</span></li></ol></li><li><ol start='4' ><li><span>折半查找法</span></li></ol></li><li><ol start='5' ><li><span>B树及其基本操作、B+树的基本概念</span></li></ol></li><li><ol start='6' ><li><span>散列表</span></li></ol></li><li><ol start='7' ><li><span>查找算法的分析及应用</span></li></ol></li></ul></li><li><p><span>复习提示</span></p><ul><li><span>本章为考研命题的重点，主要考查散列查找与折半查找</span></li></ul></li></ul><h3 id='基本概念-3'><span>基本概念</span></h3><ul><li><p><span>静态查找表</span></p><ul><li><span>仅查询特定数据，及检索满足条件的特定数据的属性</span></li></ul></li><li><p><span>动态查找表</span></p><ul><li><span>相对于静态查找表，则需要动态插入或删除</span></li></ul></li></ul><h3 id='线性结构'><span>线性结构</span></h3><ul><li><p><span>顺序查找</span></p><p><span>又称为线性查找，主要用于在</span><strong><span>线性表</span></strong><span>中进行查找</span></p><ul><li><p><span>无序线性表的顺序查找</span></p></li><li><p><span>有序的顺序表的顺序查找</span></p><ul><li><span>圆形节点表示有序顺序表中存在的元素，而矩形结点称为失败结点.</span></li></ul></li></ul></li><li><p><span>折半查找</span></p><p><span>又称二分查找, 它适用于</span><strong><span>有序</span></strong><span>的顺序表</span></p><ul><li><p><span>仅适用于顺序存储结构，且要求元素按关键字有序序列</span></p><ul><li><span>判定树是一棵平衡二叉树</span></li></ul></li></ul></li><li><p><span>分块查找</span></p><p><span>又称索引顺序查找, 它吸取了</span><strong><span>顺序</span></strong><span>及</span><strong><span>折半查找</span></strong><span>各自的优点, 即有动态结构又适于快速查找.</span></p><ul><li><p><span>将查找表分为若干子块，块内元素无需，块间元素有序</span></p><ul><li><span>查找过程：先利用折半或顺序查找法确定记录所在块，然后在块内顺序查找.</span></li></ul></li></ul></li></ul><h3 id='树形结构'><span>树形结构</span></h3><ul><li><p><span>二叉排序树</span></p></li><li><p><span>二叉平衡树</span></p></li><li><p><span>B树</span></p><p><span>又称多路平衡查找树</span></p><ul><li><p><span>是所有结点的平衡因子均等于 0 的多路平衡查找树</span></p><ul><li><span>5 阶是指终端阶段最多有 5 个分叉</span></li></ul></li></ul></li><li><p><span>B+树</span></p><ul><li><p><span>是应数据库所需而出现的一种B树的变形树</span></p><ul><li><span>无论查找成功与否，每次查找都是一条从根结点到叶结点的路径</span></li></ul></li></ul></li></ul><h3 id='散列结构'><span>散列结构</span></h3><ul><li><p><span>散列表</span></p><ul><li><p><span>散列函数</span></p><ul><li><p><span>直接定址法</span></p><ul><li><span>或 ﻿</span></li></ul></li><li><p><span>除留余数法</span></p><ul><li><span>，﻿是不大于表长的质数</span></li></ul></li><li><p><span>数字分析法</span></p><ul><li><span>选取数码分布较为均匀的若干位数作为散列地址</span></li></ul></li><li><p><span>平法取中法</span></p><ul><li><span>选取关键字的平方值的中间几位作为散列地址</span></li></ul></li></ul></li><li><p><span>冲突处理</span></p><ul><li><p><span>开发地址法</span></p><ul><li><p><span>线性探测法（有聚集现象）</span></p><ul><li></li></ul></li><li><p><span>平法探测法</span></p><ul><li></li></ul></li><li><p><span>再散列法</span></p><ul><li></li><li></li></ul></li><li><p><span>伪随机序列法</span></p><ul><li></li></ul></li></ul></li><li><p><span>拉链法（又称链地址法，无聚集现象）</span></p><ul><li><span>同义词串成一个链表</span></li></ul></li></ul></li><li><p><span>性能分析</span></p><ul><li><span>查找效率主要取决于散列函数、处理冲突的方法、填充因子</span></li></ul></li></ul></li></ul><h3 id='效率指标'><span>效率指标</span></h3><ul><li><p><span>平均查找长度</span></p><p><span>是指所有查找过程中进行关键字的比较次数的平均值, 也是衡量查找算法</span><strong><span>效率</span></strong><span>的最主要的指标.</span></p><ul><li><span>查找成功</span></li><li><span>查找失败</span></li></ul></li></ul><h2 id='排序'><span>排序</span></h2><h3 id='考查点-8'><span>考查点</span></h3><ul><li><p><span>考纲内容</span></p><ul><li><ol start='' ><li><span>排序的基本概念</span></li></ol></li><li><ol start='2' ><li><span>插入排序</span></li></ol><ul><li><span>直接插入排序</span></li><li><span>折半插入排序</span></li><li><span>希尔排序</span></li></ul></li><li><ol start='3' ><li><span>交换排序</span></li></ol><ul><li><span>冒泡排序</span></li><li><span>快速排序</span></li></ul></li><li><ol start='4' ><li><span>选择排序</span></li></ol><ul><li><span>简单选择排序</span></li><li><span>堆排序</span></li></ul></li><li><ol start='5' ><li><span>2路归并排序</span></li></ol></li><li><ol start='6' ><li><span>基数排序</span></li></ol></li><li><ol start='7' ><li><span>外部排序</span></li></ol></li><li><ol start='8' ><li><span>各种排序算法的比较</span></li></ol></li><li><ol start='9' ><li><span>排序算法的应用</span></li></ol></li></ul></li><li><p><span>复习提示</span></p><ul><li><span>堆排序、快速排序、归并排序是本章的重难点</span></li></ul></li></ul><h3 id='基本概念-4'><span>基本概念</span></h3><ul><li><p><span>稳定性</span></p><ul><li><span>是指排序后，关键字相同的元素在顺序表中的相对位置是否改变</span></li></ul></li><li><p><span>衡量标准</span></p><ul><li><p><span>各种排序算法的性质示例图</span></p><ul><li></li></ul></li></ul></li></ul><h3 id='内部排序'><span>内部排序</span></h3><p><span>是指排序期间元素全部存放在</span><strong><span>内存</span></strong><span>中的排序.</span></p><ul><li><p><span>插入排序</span></p><ul><li><p><span>直接插入与折半插入排序</span></p><ul><li><p><span>算法思想</span></p><p><span>每次将一个待排序的记录按其关键字大小插入到前面</span><strong><span>已排好序的子序列</span></strong><span>中，直到全部记录插入完成.</span></p></li><li><p><span>直接插入排序</span></p><ul><li><span>顺序查找待插入的位置，适用于顺序表及链表</span></li></ul></li><li><p><span>折半插入排序</span></p><ul><li><span>折半查找待插入的位置，仅适用于顺序表</span></li></ul></li><li><p><span>性能</span></p><ul><li><span>空间复杂度为﻿</span></li><li><span>平均时间复杂度为﻿</span></li><li><span>稳定</span></li></ul></li><li><p><span>图例</span></p><ul><li></li></ul></li><li><p><span>Java 代码实现</span></p><ul><li><p><span>直接插入排序</span></p><ul><li></li></ul></li><li><p><span>折半插入排序</span></p><ul><li></li></ul></li></ul></li></ul></li><li><p><span>希尔排序</span></p><ul><li><p><span>算法思想</span></p><p><span>把相隔某个“</span><strong><span>增量</span></strong><span>”的记录组成一个子表，对各个子表分别进行直接插入排序，当整个表中的元素已呈“基本有序”时，再对全体记录进行一次直接插入排序.</span></p></li><li><p><span>适用性</span></p><ul><li><span>仅适用于线性表为顺序存储的情况</span></li></ul></li><li><p><span>性能</span></p><ul><li><span>空间复杂度为﻿</span></li><li><span>平均时间复杂度尚未知（数学难题）</span></li><li><span>不稳定</span></li></ul></li><li><p><span>图例</span></p><ul><li></li></ul></li><li><p><span>Java 代码实现</span></p><ul><li></li></ul></li></ul></li></ul></li><li><p><span>交换排序</span></p><ul><li><p><span>冒泡排序</span></p><ul><li><p><span>算法思想</span></p><p><span>从后往前(或从前往后)两两比较相邻元素的值, 若为逆序(即</span><strong><span>A[i-1] &gt; A[i]</span></strong><span>), 则交换它们, 直到序列比较完.</span></p></li><li><p><span>性能</span></p><ul><li><span>空间复杂度为﻿</span></li><li><span>平均时间复杂度为﻿</span></li><li><span>不稳定</span></li></ul></li><li><p><span>注意点</span></p><ul><li><span>冒泡排序中产生的有序子序列一定是全局有序的（不同于直接插入排序是局部有序的）</span></li></ul></li><li><p><span>图例</span></p><ul><li></li></ul></li><li><p><span>Java 代码实现</span></p><ul><li></li></ul></li></ul></li><li><p><span>快速排序</span></p><ul><li><p><span>算法思想</span></p><p><span>1.在待排序的元素中任取一个元素作为基准(通常取第一个, 但最好随机取哈), 称为</span><strong><span>基准元素</span></strong><span>.</span>
+<span>2.将待排序的元素进行区分, 比基准元素大的元素放在它的右边, 比其小的放在它的左边.</span>
+<span>3.对左右两个分区重复以上步骤, 直到所有元素都是有序的.</span></p></li><li><p><span>性能</span></p><ul><li><span>空间复杂度为﻿</span></li><li><span>平均时间复杂度为﻿</span></li><li><span>不稳定</span></li></ul></li><li><p><span>注意点</span></p><ul><li><span>快排中并不产生有序子序列，每趟排序后会将基准元素放到其最终位置</span></li></ul></li><li><p><span>图例</span></p><ul><li></li></ul></li><li><p><span>Java 代码实现</span></p><ul><li></li></ul></li></ul></li></ul></li><li><p><span>选择排序</span></p><ul><li><p><span>简单选择排序</span></p><ul><li><p><span>算法思想</span></p><ul><li><span>每一趟在待排序元素中选取关键字最小的元素加入有序子序列，总共进行 ﻿ 趟处理</span></li></ul></li><li><p><span>性能</span></p><ul><li><span>空间复杂度为﻿</span></li><li><span>平均时间复杂度为﻿</span></li><li><span>不稳定</span></li></ul></li><li><p><span>适用性</span></p><ul><li><span>顺序表、链表</span></li></ul></li><li><p><span>Java 代码实现</span></p><ul><li></li></ul></li></ul></li><li><p><span>堆排序</span></p><ul><li><p><span>复习完全二叉树的概念</span></p><ul><li><span>结点 ﻿ 的左孩子是 ﻿，右孩子是 ﻿，父节点为 ﻿</span></li><li><span>编号 ﻿ 的结点为分支结点</span></li></ul></li><li><p><span>性能</span></p><ul><li><span>空间夫再度为﻿</span></li><li><span>平均时间复杂度为﻿</span></li><li><span>不稳定</span></li></ul></li><li><p><span>区分</span></p><ul><li><span>大根堆（根 </span>&gt;<span>= 左、右）构造的堆的节点值从上到下依次减小</span></li><li><span>小根堆（根 </span>&lt;<span>= 左、右）构造的堆的节点值从上到下依次增大</span></li></ul></li><li><p><span>适用性</span></p><ul><li><span>适用于关键字较多的情况 1000)&quot; contenteditable=&quot;false&quot;&gt;﻿，例如在1亿个数中选出前100个最大值</span></li></ul></li><li><p><span>图例</span></p><ul><li></li></ul></li><li><p><span>Java 代码实现</span></p><ul><li></li></ul></li></ul></li></ul></li><li><p><span>归并排序</span></p><ul><li><p><span>算法思想</span></p><ul><li><span>将两个或两个以上的有序表组合成一个新的有序表（2路归并为二合一，进而 k 路归并为 k 合一）</span></li></ul></li><li><p><span>性能</span></p><ul><li><span>空间复杂度为﻿</span></li><li><span>平均时间复杂度为﻿</span></li><li><span>稳定</span></li></ul></li><li><p><span>图例</span></p><ul><li></li></ul></li><li><p><span>Java 代码实现</span></p><ul><li></li></ul></li></ul></li><li><p><span>基数排序</span></p><ul><li><p><span>算法思想</span></p><ul><li><ol start='' ><li><span>将整个关键字拆分为 d 位（或 &quot;组&quot;）</span></li></ol></li><li><ol start='2' ><li><span>按照各个关键字位权重递增的次序（如个、十、百）做 d 趟 “分配”和“收集”</span></li></ol></li><li><ol start='3' ><li><span>分配：顺序扫描各个元素，根据当前处理的关键字位，将元素插入相应队列，一趟分配耗时 O(n)</span></li></ol></li><li><ol start='4' ><li><span>收集：把各个队列中的结点依次出队并链接，一趟收集耗时 O(r)</span></li></ol></li></ul></li><li><p><span>性能</span></p><ul><li><span>空间复杂度为﻿</span></li><li><span>时间复杂度为﻿</span></li><li><span>稳定</span></li></ul></li><li><p><span>注意点</span></p><ul><li><span>基数排序不能对 ﻿ 和 ﻿ 类型的实数进行排序</span></li></ul></li><li><p><span>图例</span></p><ul><li><span>初始序列： 109 —&gt; 063 —&gt; 930 —&gt; 589 —&gt; 184 —&gt; 505 —&gt; 269 —&gt; 008 —&gt; 083&quot;&gt;﻿</span></li></ul></li><li><p><span>Java 代码实现</span></p><ul><li></li></ul></li></ul></li><li><p><span>总结</span></p><ul><li><ol start='' ><li><span>经过一趟排序后，插入排序、归并排序、希尔排序不能确定一个元素的最终位置</span></li></ol></li><li><ol start='2' ><li><span>选择排序、归并排序、插入排序、基数排序的比较次数与初始状态无关</span></li></ol></li><li><ol start='3' ><li><span>算法的使用场景（﻿为元素数目）</span></li></ol><ul><li><span>3.1 当 ﻿ 较小时建议使用直插或简单选择排序</span></li><li><span>3.2 当 ﻿ 较大时建议使用快排、堆排序或归并排序</span></li><li><span>3.3 当 ﻿ 很大，关键字位数较少且可分解时，建议使用基数排序</span></li><li><span>3.4 当记录本身信息量较大时，为了避免耗费大量时间移动记录，建议使用链表作为存储结构</span></li></ul></li></ul></li></ul><h3 id='外部排序'><span>外部排序</span></h3><p><span>是指排序期间元素无法同时存放在内存中, 必须在排序的过程中根据要求不断地在</span><strong><span>内、外存</span></strong><span>之间移动的排序.</span></p><ul><li><span>多路归并排序（较抽象）</span></li></ul><h2 id='扩展'><span>扩展</span></h2><h3 id='个人介绍'><span>个人介绍</span></h3><ul><li><span>GoogTech</span></li><li><a href='mailto:hi@googtech.io' target='_blank' class='url'>hi@googtech.io</a></li><li><a href='https://googtech.io' target='_blank' class='url'>https://googtech.io</a></li><li><span>Developer, hacker, blogger, guitarist, marathoner and video creator.</span></li></ul><h3 id='算法可视化网站'><span>算法可视化网站</span></h3><ul><li><p><span>The B-Tree</span></p><ul><li><a href='https://yangez.github.io/btree-js/' target='_blank' class='url'>https://yangez.github.io/btree-js/</a></li></ul></li><li><p><span>The Binary Tree</span></p><ul><li><a href='https://520it.com/binarytrees/' target='_blank' class='url'>https://520it.com/binarytrees/</a></li></ul></li><li><p><span>Data Structure Visualizations</span></p><ul><li><a href='https://www.cs.usfca.edu/~galles/visualization/Algorithms.html' target='_blank' class='url'>https://www.cs.usfca.edu/~galles/visualization/Algorithms.html</a></li></ul></li><li><p><span>Visualizes algorithms from code</span></p><ul><li><a href='https://algorithm-visualizer.org/' target='_blank' class='url'>https://algorithm-visualizer.org/</a></li></ul></li><li><p><span>Visualising data structures and algorithms through animation</span></p><ul><li><a href='https://visualgo.net/en' target='_blank' class='url'>https://visualgo.net/en</a></li></ul></li></ul><h3 id='算法复杂度分析'><span>算法复杂度分析</span></h3><ul><li><p><span>Big-O Notation</span></p><ul><li><a href='https://cooervo.github.io/Algorithms-DataStructures-BigONotation/index.html' target='_blank' class='url'>https://cooervo.github.io/Algorithms-DataStructures-BigONotation/index.html</a></li></ul></li><li><p><span>Big-O Cheat Sheet</span></p><ul><li><a href='https://www.bigocheatsheet.com/' target='_blank' class='url'>https://www.bigocheatsheet.com/</a></li></ul></li></ul><p><em><span>XMind - Trial Version</span></em></p></div></div>
+</body>
+</html>
